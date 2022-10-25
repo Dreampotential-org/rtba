@@ -6,87 +6,64 @@ function init() {
 function configure_events() {
     $("#start").on("click", function(ev) {
         ev.preventDefault();
-
-        var body = {
-            name: items[0].value,
-            email: items[1].value,
-            password: items[2].value,
-        };
-
-        $.ajax({
-            url: SERVER + "profile/user/register/",
-            type: "post",
-            data: $(this).serialize(),
-            success: function(response) {
-                console.log(response);
-                loginResponse = response;
-                localStorage.setItem("user-token", response.token);
-
-                swal({
-                    title: "Welcome " + response.user.name + "!",
-                    text: "Your account is created.",
-                    icon: "success",
-                    buttons: false,
-                    timer: 1000,
-                });
-
-
-
-
-            },
-            error: function(err) {
-                swal({
-                    title: "Error",
-                    text: err.responseJSON.msg,
-                    icon: "error",
-                });
-            },
+        alert("HERE")
+        signup_api({
+            name: 'StarterName',
+            email: $("#account").val(),
+            password: $("#password").val(),
+            days_sober: null,
         });
-    });
-
-    $("#loginForm").on("submit", function(ev) {
-        ev.preventDefault();
-        swal({
-            title: "Signing In!",
-            icon: "success",
-            buttons: false,
-        });
-
-        $.ajax({
-            url: SERVER + "profile/user/login",
-            type: "post",
-            async: true,
-            crossDomain: true,
-            crossOrigin: true,
-            data: $(this).serialize(),
-            success: function(response) {
-                // Whatever you want to do after the form is successfully submitted
-                loginResponse = response;
-                localStorage.setItem("user-token", response.token);
-
-                swal({
-                    title: "Welcome " + response.user.name + "!",
-                    text: "You are logged in.",
-                    icon: "success",
-                    buttons: false,
-                    timer: 1000,
-                });
-
-                // displayPage("dashboard");
-                window.curr_user = response.user;
-                //if(response.is_teacher)
-                // else
-            },
-            error: function(e) {
-                swal({
-                    title: "Error",
-                    text: e.responseJSON.msg||"",
-                    icon: "error",
-                });
-            },
-        });
-    });
-
+    })
 }
+
+
+
+function signup_api(params) {
+    if (params.days_sober == null) {
+        params.days_sober = "0";
+    }
+    var form = new FormData();
+    form.append("name", params.name);
+    form.append("email", params.email);
+    form.append("days_sober", params.days_sober);
+    form.append("sober_date", null);
+    form.append("password", params.password);
+    form.append("source", window.location.host);
+
+    var path = window.location.pathname;
+    var page = path.split("/").pop();
+    form.append("page", page.toLowerCase());
+
+    var settings = {
+        async: true,
+        crossDomain: true,
+        url: SERVER + "api/create-user/",
+        method: "POST",
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: form,
+    };
+    $.ajax(settings).done(function (response) {
+        if (Object.keys(JSON.parse(response)).includes('token')) {
+            localStorage.setItem("session_id",
+                                JSON.parse(response).token);
+            swal({title: "Good job!",
+                  text: "You're logged in",
+                  icon: "success",
+                 });
+        }
+    }).fail(function (err) {
+        console.log(err);
+        swal({
+            title: "warning",
+            text: "Invalid email or password",
+            icon: "warning",
+        });
+    });
+}
+
+
+
 
 window.addEventListener('DOMContentLoaded', init, false);
