@@ -61,9 +61,7 @@ function geo_success_low(position) {
     CURRENT_POSITION_LOW = position
     console.log(position.coords.latitude +
         " " + position.coords.longitude);
-
-    session_point({'lat': position.coords.latitude,
-                   'lng': position.coords.longitude})
+    session_point(position)
 
 }
 
@@ -71,8 +69,7 @@ function geo_success(position) {
     CURRENT_POSITION = position
     console.log(position.coords.latitude +
         " " + position.coords.longitude);
-    session_point({'lat': position.coords.latitude,
-                   'lng': position.coords.longitude})
+    session_point(position)
 }
 
 

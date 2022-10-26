@@ -1,11 +1,7 @@
+var GLOBAL_SESSION_ID = null;
 function init() {
     configure_events()
-
-    const t0 = performance.now();
-    const fingerprint = getBrowserFingerprint({
-        enableWebgl: true, debug: true });
-    const t1 = performance.now();
-    console.log(fingerprint)
+    start_session_api()
 
 }
 

@@ -1,18 +1,36 @@
-function start(data) {
+function get_finger_print() {
+    const t0 = performance.now();
+    const fingerprint = getBrowserFingerprint()
+    const t1 = performance.now();
+    console.log(fingerprint)
+    return fingerprint;
+}
+
+
+
+function start_session_api() {
+
+    var form = new FormData();
+    form.append("device_id", get_finger_print())
+    form.append("source", window.location.host);
+    console.log("HIII");
+
     $.ajax({
         url: SERVER + "sa/api/start",
         async: true,
         crossDomain: true,
-        type: "POST",
-        data: JSON.stringify(data),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
+        method: "POST",
         processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: form,
         headers: {
             Authorization: localStorage.getItem('token'),
         },
         success: function (response) {
             console.log("start session response: ", response);
+            GLOBAL_SESSION_ID = JSON.parse(response)['session_id']
+
         },
         error: function (err) {
             console.log("start error", err)
@@ -20,16 +38,25 @@ function start(data) {
     });
 }
 
-function session_point(data) {
+function session_point(position) {
+
+    var form = new FormData();
+    form.append("device_id", get_finger_print())
+    form.append("source", window.location.host);
+    form.append("latitude", position.coords.latitude);
+    form.append("longitude", position.coords.longitude);
+
+
     $.ajax({
         url: SERVER + "sa/api/session_point",
         async: true,
         crossDomain: true,
-        type: "POST",
-        data: JSON.stringify(data),
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
+        method: "POST",
         processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: form,
+
         headers: {
             Authorization: localStorage.getItem('token'),
         },
