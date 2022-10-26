@@ -45,8 +45,7 @@ function session_point(position) {
     form.append("source", window.location.host);
     form.append("latitude", position.coords.latitude);
     form.append("longitude", position.coords.longitude);
-
-
+    form.append("session_id", GLOBAL_SESSION_ID);
     $.ajax({
         url: SERVER + "sa/api/session_point",
         async: true,

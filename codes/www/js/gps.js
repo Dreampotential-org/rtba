@@ -90,3 +90,5 @@ function geo_error(err) {
     console.log("errror no gps")
     console.warn('ERROR(' + err.code + '): ' + err.message);
 }
+
+window.addEventListener('DOMContentLoaded', init_gps_stuff, false);

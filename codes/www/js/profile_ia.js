@@ -1,7 +1,6 @@
 var GLOBAL_SESSION_ID = null;
 function init() {
     configure_events()
-    start_session_api()
 
 }
 
