@@ -1,0 +1,28 @@
+<html>
+
+  <head>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/session.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/gps.js"></script>
+    <style>
+      #livedata {
+        height: 125px;
+      }
+    </style>
+    <script>
+      var data = {};
+      var dist_array = [];
+      var interval;
+
+    </script>
+  </head>
+
+  <body>
+    <div id="livedata" style="overflow:auto"></div>
+    <button id='start_session'>Start Session</button>
+    <button id='stop_session' style='display:none;'>Stop Session</button>
+    <div id='distance' ></div>
+  </body>
+<html>

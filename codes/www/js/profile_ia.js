@@ -6,7 +6,6 @@ function init() {
 function configure_events() {
     $("#start").on("click", function(ev) {
         ev.preventDefault();
-        alert("HERE")
         signup_api({
             name: 'StarterName',
             email: $("#account").val(),
@@ -62,8 +61,5 @@ function signup_api(params) {
         });
     });
 }
-
-
-
 
 window.addEventListener('DOMContentLoaded', init, false);
