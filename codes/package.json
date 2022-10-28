@@ -14,5 +14,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "jquery": "^3.6.1"
+  },
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "devDependencies": {
+    "cordova-android": "^10.1.2"
   }
 }

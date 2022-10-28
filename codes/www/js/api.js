@@ -29,8 +29,8 @@ function start_session_api() {
         },
         success: function (response) {
             console.log("start session response: ", response);
-            GLOBAL_SESSION_ID = JSON.parse(response)['session_id']
-
+            GLOBAL_SESSION_ID = 'testsession';
+            //JSON.parse(response)['session_id']
         },
         error: function (err) {
             console.log("start error", err)
