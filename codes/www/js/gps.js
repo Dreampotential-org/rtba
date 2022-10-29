@@ -1,3 +1,7 @@
+
+var POINTS = []
+
+
 function init_gps_stuff() {
     init_gps_event();
 }
@@ -75,6 +79,8 @@ function geo_success(position) {
 
 
 function geo_error(err) {
+	console.log("Geo error" + err.code);
+
     if (err.code == 1 || err.code == err.PERMISSION_DENIED ||
         err.code == err.UNKNOWN_ERROR) {
         swal({

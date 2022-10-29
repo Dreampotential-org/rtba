@@ -39,7 +39,10 @@ function start_session_api() {
 }
 
 function session_point(position) {
-
+    POINTS.push({'latitude':  position.coords.latitude,
+                 'longitude': position.coords.longitude})
+    $("#debug").text(POINTS)
+    return
     var form = new FormData();
     form.append("device_id", get_finger_print())
     form.append("source", window.location.host);
