@@ -42,7 +42,6 @@ function session_point(position) {
     POINTS.push({'latitude':  position.coords.latitude,
                  'longitude': position.coords.longitude})
     $("#debug").text(POINTS)
-    return
     var form = new FormData();
     form.append("device_id", get_finger_print())
     form.append("source", window.location.host);
@@ -64,6 +63,12 @@ function session_point(position) {
         },
         success: function (response) {
             console.log("start response: ", response);
+
+
+            // get updated distances...
+            // get_distances()
+
+
         },
         error: function (err) {
             console.log("start error", err)
@@ -71,6 +76,29 @@ function session_point(position) {
     });
 }
 
+function get_distances() {
+    var form = new FormData();
+    $.ajax({
+        url: SERVER + "sa/api/get_distances",
+        async: true,
+        crossDomain: true,
+        method: "POST",
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: form,
+
+        headers: {
+            Authorization: localStorage.getItem('token'),
+        },
+        success: function (resp) {
+            console.log("start get_distances(): ", resp);
+        },
+        error: function (err) {
+            console.log("start error", err)
+        },
+    });
+}
 
 
 function start_polling() {
