@@ -39,6 +39,8 @@ function start_session_api() {
 }
 
 function session_point(position) {
+
+    // alert("Start")
     POINTS.push({'latitude':  position.coords.latitude,
                  'longitude': position.coords.longitude})
     $("#debug").text(POINTS)
@@ -63,7 +65,7 @@ function session_point(position) {
         },
         success: function (response) {
             console.log("start response: ", response);
-
+            // alert("Started")
 
             // get updated distances...
             // get_distances()
@@ -72,6 +74,7 @@ function session_point(position) {
         },
         error: function (err) {
             console.log("start error", err)
+            // alert("Start error")
         },
     });
 }
