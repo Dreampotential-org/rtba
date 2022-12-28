@@ -83,6 +83,7 @@ function geo_error(err) {
 
     if (err.code == 1 || err.code == err.PERMISSION_DENIED ||
         err.code == err.UNKNOWN_ERROR) {
+	alert(err.code)
         swal({
             title: "GPS Issue.",
             text: "Please allow gps permission",

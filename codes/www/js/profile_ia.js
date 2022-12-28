@@ -1,5 +1,28 @@
 var GLOBAL_SESSION_ID = null;
 function init() {
+/*
+if ('wakeLock' in navigator) {
+  isSupported = true;
+  alert('Screen Wake Lock API supported!')
+
+	try {
+	  navigator.wakeLock.request('screen');
+	  alert('Wake Lock is active!');
+	} catch (err) {
+	  // The Wake Lock request has failed - usually system related, such as battery.
+	}
+
+
+
+
+
+} else {
+  wakeButton.disabled = true;
+  alert('Wake lock is not supported by this browser.')
+}
+*/
+
+
     configure_events()
 
 }
