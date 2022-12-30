@@ -7,13 +7,11 @@ function get_finger_print() {
 }
 
 
-
-function start_session_api() {
+function start_session_api(callback) {
 
     var form = new FormData();
     form.append("device_id", get_finger_print())
     form.append("source", window.location.host);
-    console.log("HIII");
 
     $.ajax({
         url: SERVER + "sa/api/start",
@@ -29,8 +27,8 @@ function start_session_api() {
         },
         success: function (response) {
             console.log("start session response: ", response);
-            GLOBAL_SESSION_ID = 'testsession';
-            //JSON.parse(response)['session_id']
+            GLOBAL_SESSION_ID = JSON.parse(response)['session_id']
+            callback(JSON.parse(response)['session_id'])
         },
         error: function (err) {
             console.log("start error", err)
@@ -43,7 +41,7 @@ function session_point(position) {
     // alert("Start")
     POINTS.push({'latitude':  position.coords.latitude,
                  'longitude': position.coords.longitude})
-    $("#debug").text(POINTS)
+    // $("#debug").text(POINTS)
     var form = new FormData();
     form.append("device_id", get_finger_print())
     form.append("source", window.location.host);
@@ -78,6 +76,60 @@ function session_point(position) {
         },
     });
 }
+
+
+function get_user_stats(callback) {
+    var form = new FormData();
+    $.ajax({
+        url: SERVER + "sa/api/stats?device_id=" + get_finger_print(),
+        async: true,
+        crossDomain: true,
+        method: "GET",
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: form,
+
+        headers: {
+            Authorization: localStorage.getItem('token'),
+        },
+        success: function (resp) {
+            console.log("user_stats: ", resp);
+            callback(JSON.parse(resp))
+        },
+        error: function (err) {
+            console.log("start error", err)
+        },
+    });
+}
+
+
+
+function list_medias(callback) {
+    var form = new FormData();
+    $.ajax({
+        url: SERVER + "configs/list_media",
+        async: true,
+        crossDomain: true,
+        method: "GET",
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: form,
+
+        headers: {
+            Authorization: localStorage.getItem('token'),
+        },
+        success: function (resp) {
+            console.log("list_medias: ", resp);
+            callback(JSON.parse(resp))
+        },
+        error: function (err) {
+            console.log("start error", err)
+        },
+    });
+}
+
 
 function get_distances() {
     var form = new FormData();

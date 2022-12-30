@@ -1,30 +1,51 @@
 var GLOBAL_SESSION_ID = null;
 function init() {
-/*
-if ('wakeLock' in navigator) {
-  isSupported = true;
-  alert('Screen Wake Lock API supported!')
+//    cordova.plugins.backgroundMode.enable();
 
-	try {
-	  navigator.wakeLock.request('screen');
-	  alert('Wake Lock is active!');
-	} catch (err) {
-	  // The Wake Lock request has failed - usually system related, such as battery.
-	}
+    start_session_api(function(session) {
+        start_gps();
+    })
 
 
-
-
-
-} else {
-  wakeButton.disabled = true;
-  alert('Wake lock is not supported by this browser.')
-}
-*/
-
+    display_user_stats()
 
     configure_events()
+    list_medias(function(medias) {
+        for(var media of medias) {
+            console.log(media)
+            setup_media(media)
+            break
+        }
+    })
+}
 
+
+
+var GLOB = null
+function display_user_stats() {
+    get_user_stats(function(results) {
+        GLOB = results;
+        console.log("userstats")
+        console.log(results)
+
+        var status_text = ""
+
+        for (var i = 0; i < results['user_status'].length; i++ ) {
+            alert(result[i])
+            console.log(result[i])
+            for (var session_stat of results[i]['sessions_stats']) {
+                status_text += (
+                    "<div>#" + i + " " + session_stat.distance +
+                    " points " + session_stat.points + "</div><br>"
+                )
+            }
+        }
+        alert(status_text)
+        $("#stats").text(status_text)
+        //setTimeout(function() {
+        //    display_user_stats();
+        //})});
+    });
 }
 
 
@@ -87,4 +108,26 @@ function signup_api(params) {
     });
 }
 
+function screenlock() {
+/*
+if ('wakeLock' in navigator) {
+  isSupported = true;
+  alert('Screen Wake Lock API supported!')
+
+	try {
+	  navigator.wakeLock.request('screen');
+	  alert('Wake Lock is active!');
+	} catch (err) {
+	  // The Wake Lock request has failed - usually system related, such as battery.
+	}
+} else {
+  wakeButton.disabled = true;
+  alert('Wake lock is not supported by this browser.')
+}
+*/
+}
+
 window.addEventListener('DOMContentLoaded', init, false);
+
+
+
