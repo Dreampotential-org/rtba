@@ -82,6 +82,7 @@ function get_user_stats(callback) {
     var form = new FormData();
     $.ajax({
         url: SERVER + "sa/api/stats?device_id=" + get_finger_print(),
+        // url: SERVER + "sa/api/stats?device_id=test",
         async: true,
         crossDomain: true,
         method: "GET",
