@@ -19,32 +19,25 @@ function init() {
     })
 }
 
-
-
 var GLOB = null
 function display_user_stats() {
     get_user_stats(function(results) {
         GLOB = results;
-        console.log("userstats")
-        console.log(results)
+        var count = results.interval_stats.length
 
-        var status_text = ""
+        $("#stats_miles").text(results['miles'])
+        $("#stats_mph").text(results['interval_stats'][count -1]['mph'])
 
-        for (var i = 0; i < results['user_status'].length; i++ ) {
-            alert(result[i])
-            console.log(result[i])
-            for (var session_stat of results[i]['sessions_stats']) {
-                status_text += (
-                    "<div>#" + i + " " + session_stat.distance +
-                    " points " + session_stat.points + "</div><br>"
-                )
+        // display some weight
+
+        // display previous 10 segments
+        var sorted_stats = results['interval_stats'].reverse()
+        for(var i = 1; i < 10; i++) {
+            if (i > sorted_stats.length) {
+                break
             }
+            $("#interval_mph").append(sorted_stats[i]['mph'] + " </br>")
         }
-        alert(status_text)
-        $("#stats").text(status_text)
-        //setTimeout(function() {
-        //    display_user_stats();
-        //})});
     });
 }
 

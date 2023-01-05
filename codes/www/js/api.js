@@ -36,11 +36,20 @@ function start_session_api(callback) {
     });
 }
 
+var POINTS = []
 function session_point(position) {
 
-    // alert("Start")
-    POINTS.push({'latitude':  position.coords.latitude,
-                 'longitude': position.coords.longitude})
+    point = {'latitude':  position.coords.latitude,
+             'longitude': position.coords.longitude}
+
+    POINTS.push(point)
+
+    if (POINTS.length == 1) {
+        init_map(POINTS[0])
+    } else {
+        add_point(point)
+    }
+
     // $("#debug").text(POINTS)
     var form = new FormData();
     form.append("device_id", get_finger_print())
@@ -81,8 +90,8 @@ function session_point(position) {
 function get_user_stats(callback) {
     var form = new FormData();
     $.ajax({
-        url: SERVER + "sa/api/stats?device_id=" + get_finger_print(),
-        // url: SERVER + "sa/api/stats?device_id=test",
+        //url: SERVER + "sa/api/stats?device_id=" + get_finger_print(),
+        url: SERVER + "sa/api/stats?device_id=2148488581",
         async: true,
         crossDomain: true,
         method: "GET",
