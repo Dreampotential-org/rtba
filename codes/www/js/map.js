@@ -11,14 +11,6 @@ var path = []; // global variable to hold all the past locations
 
 function initialize() {
     map = new google.maps.Map(
-
-
-    get_user_stats(function(results) {
-        for(var result of results) {
-
-        }
-
-    })
     document.getElementById("map_canvas"), {
         center: new google.maps.LatLng(37.4419, -122.1419),
         zoom: 13,
@@ -26,6 +18,12 @@ function initialize() {
     });
     setInterval(gotdata, 1000);
 
+
+    //get_user_stats(function(results) {
+    //    for(var result of results) {
+
+    //    }
+    //})
 }
 google.maps.event.addDomListener(window, "load", initialize);
 
