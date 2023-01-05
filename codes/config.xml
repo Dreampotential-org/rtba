@@ -20,5 +20,5 @@
 <edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge">
     <string>need location access to find things nearby</string>
 </edit-config>
-
+<preference name="android-targetSdkVersion" value="31" />
 </widget>
