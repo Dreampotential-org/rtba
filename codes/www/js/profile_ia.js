@@ -2,12 +2,18 @@ var GLOBAL_SESSION_ID = null;
 function init() {
 //    cordova.plugins.backgroundMode.enable();
 
+    console.log("STart HERe")
     start_session_api(function(session) {
+        console.log("Start Session")
+        alert("Start gps")
         start_gps();
     })
 
 
-    display_user_stats()
+    setInterval(function() {
+        console.log("interval")
+        display_user_stats()
+    }, 3000)
 
     configure_events()
     list_medias(function(medias) {
@@ -24,6 +30,7 @@ function display_user_stats() {
     get_user_stats(function(results) {
         GLOB = results;
         var count = results.interval_stats.length
+        if (count == 0) return
 
         $("#stats_miles").text(results['miles'])
         $("#stats_mph").text(results['interval_stats'][count -1]['mph'])
@@ -121,6 +128,5 @@ if ('wakeLock' in navigator) {
 }
 
 window.addEventListener('DOMContentLoaded', init, false);
-
 
 

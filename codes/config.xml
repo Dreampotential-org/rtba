@@ -21,4 +21,6 @@
     <string>need location access to find things nearby</string>
 </edit-config>
 <preference name="android-targetSdkVersion" value="31" />
+<platform name="android"><preference name="loadUrlTimeoutValue" value="700000" /></platform>
+
 </widget>

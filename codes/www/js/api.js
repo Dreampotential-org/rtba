@@ -88,10 +88,11 @@ function session_point(position) {
 
 
 function get_user_stats(callback) {
+    console.log(SERVER)
     var form = new FormData();
     $.ajax({
-        //url: SERVER + "sa/api/stats?device_id=" + get_finger_print(),
-        url: SERVER + "sa/api/stats?device_id=2148488581",
+        url: SERVER + "sa/api/stats?device_id=" + get_finger_print(),
+        //url: SERVER + "sa/api/stats?device_id=2148488581",
         async: true,
         crossDomain: true,
         method: "GET",
