@@ -2,6 +2,7 @@ var GLOBAL_SESSION_ID = null;
 function init() {
 //    cordova.plugins.backgroundMode.enable();
 
+    init_motions()
     console.log("STart HERe")
     start_session_api(function(session) {
         console.log("Start Session")

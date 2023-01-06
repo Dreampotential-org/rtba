@@ -29,7 +29,8 @@
       },
       "cordova-plugin-geolocation": {
         "GPS_REQUIRED": "true"
-      }
+      },
+      "cordova-plugin-device-motion": {}
     }
   },
   "devDependencies": {
@@ -38,6 +39,7 @@
     "cordova-plugin-background-fetch": "~7.1.1",
     "cordova-plugin-background-mode": "^0.7.3",
     "cordova-plugin-device": "^2.1.0",
+    "cordova-plugin-device-motion": "^2.0.1",
     "cordova-plugin-geolocation": "^4.1.0"
   }
 }
