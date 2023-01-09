@@ -5,46 +5,17 @@ function init_motions() {
         navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
     }
 
-    motions_points = [
-        {
-            'g': 1,
-            'x': 1,
-            'y': 1,
-            'z': 1
-        },
-        {
-            'g': 1,
-            'x': 1,
-            'y': 1,
-            'z': 1
-        },
-        {
-            'g': 1,
-            'x': 1,
-            'y': 1,
-            'z': 1
-        },
-        {
-            'g': 1,
-            'x': 1,
-            'y': 1,
-            'z': 1
-        }
-    ]
-
-    motions_points = JSON.stringify(motions_points)
-
+    // motions_points = JSON.stringify(motions_points)
     // snyc_motions_api(motions_points);
     console.log("called snyc_motions_api..!")
 
 
 }
 function onSuccess(acceleration) {
-    alert('Acceleration X: ' + acceleration.x + '\n' +
+    $("#motion_debug").text('Acceleration X: ' + acceleration.x + '\n' +
           'Acceleration Y: ' + acceleration.y + '\n' +
           'Acceleration Z: ' + acceleration.z + '\n' +
           'Timestamp: '      + acceleration.timestamp + '\n');
-
 
     MOTIONS.append({'x': acceleration.x,
                     'y':  acceleration.y,
