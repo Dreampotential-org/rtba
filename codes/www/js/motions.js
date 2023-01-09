@@ -4,6 +4,41 @@ function init_motions() {
     if (isApp()) {
         navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
     }
+
+
+    motions_points = [
+        {
+            'g': 1,
+            'x': 1,
+            'y': 1,
+            'z': 1
+        },
+        {
+            'g': 1,
+            'x': 1,
+            'y': 1,
+            'z': 1
+        },
+        {
+            'g': 1,
+            'x': 1,
+            'y': 1,
+            'z': 1
+        },
+        {
+            'g': 1,
+            'x': 1,
+            'y': 1,
+            'z': 1
+        }
+    ]
+
+    motions_points = JSON.stringify(motions_points)
+
+    snyc_motions_api(motions_points);
+    console.log("called snyc_motions_api..!")
+
+
 }
 function onSuccess(acceleration) {
     alert('Acceleration X: ' + acceleration.x + '\n' +
@@ -31,10 +66,13 @@ function sync_motions() {
 }
 
 
-function snyc_motions_api(sync_motions) {
+
+function snyc_motions_api(motions_points) {
     var form = new FormData();
     form.append("device_id", get_finger_print())
     form.append("source", window.location.host);
+    form.append("motions_points", motions_points);
+    console.log(motions_points)
 
     $.ajax({
         url: SERVER + "sa/api/bulk_sync_motions",
