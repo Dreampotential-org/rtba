@@ -5,7 +5,6 @@ function init_motions() {
         navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
     }
 
-
     motions_points = [
         {
             'g': 1,
@@ -35,7 +34,7 @@ function init_motions() {
 
     motions_points = JSON.stringify(motions_points)
 
-    snyc_motions_api(motions_points);
+    // snyc_motions_api(motions_points);
     console.log("called snyc_motions_api..!")
 
 
