@@ -1,52 +1,77 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <!--
-        -->
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-        <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFH-yKmfPyaa18_uYUwVWb7THj-b1hymE&v=weekly"
-        ></script>
 
-        <style>
-        </style>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Life Force Energy</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-                <div id='player0'></div>
-                <p></p>
-                <p></p>
-            </div>
+<head>
+    <meta charset="utf-8">
+    <!--
+        -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <title>Hello World</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFH-yKmfPyaa18_uYUwVWb7THj-b1hymE&v=weekly"></script>
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <h1>Life Force Energy</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+            <div id='player0'></div>
+            <p></p>
+            <p></p>
         </div>
-        <div id="stats">
-            <h1>Total Miles: <b><span id="stats_miles"><span></b></h1><br>
-            <h1>MPH: <b><span id="stats_mph"><span></b></h1>
-            <h2>Intervals MPH: <span id="interval_mph"><span></h2>
-        </div>
-        <div id="motion_debug"></div>
-        <div id="map_canvas" style="width:750px; height:450px; border: 2px solid #3872ac;"></div>
-        <div id="debug"></div>
-        <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/gps.js"></script>
-        <script src="js/audio.js"></script>
-        <script src="js/api.js"></script>
-        <script src="js/map.js"></script>
-        <script src="js/profile_ia.js"></script>
-        <script src="js/motions.js"></script>
-        <script src="js/config.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/sweetalert.min.js"></script>
-        <script type='module' src="js/fingerprint.js"></script>
-    </body>
+    </div>
+    <div id="stats">
+        <h1>Total Miles: <b><span id="stats_miles"><span></b></h1><br>
+        <h1>MPH: <b><span id="stats_mph"><span></b></h1>
+        <h2>Intervals MPH: <span id="interval_mph"><span></h2>
+    </div>
+
+    <div>
+        <button  style="background: darkcyan;color:white; font-size:medium;" id="interval_btn">Intervals</button>
+
+        <br /><br />
+
+        <button style="background: darkcyan;color:white; font-size:medium;" id="Map">Map</button>
+    </div>
+
+    <div id="motion_debug"></div>
+    <div id="map_canvas" style="width:750px; height:450px; border: 2px solid #3872ac; display: none;"></div>
+    <div id="debug"></div>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/gps.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/profile_ia.js"></script>
+    <script src="js/motions.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script type='module' src="js/fingerprint.js"></script>
+    <script>
+        document.getElementById("Map").onclick = function () {
+            document.getElementById("map_canvas").style.display = "block";
+            document.getElementById("interval_mph").style.display = "none";
+            // window.speechSynthesis.cancel()
+
+        }
+        document.getElementById("interval_btn").onclick = function () {
+            document.getElementById("map_canvas").style.display = "none";
+            document.getElementById("interval_mph").style.display = "block";
+
+        }
+        
+    </script>
+</body>
+
 </html>
