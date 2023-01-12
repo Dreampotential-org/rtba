@@ -32,18 +32,18 @@
     <div id="stats">
         <h1>Total Miles: <b><span id="stats_miles"><span></b></h1><br>
         <h1>MPH: <b><span id="stats_mph"><span></b></h1>
-        <h2>Intervals MPH: <span id="interval_mph"><span></h2>
+        <div>
+            <button class="interval_button" style="
+                background-color: blue;" id="interval_btn">Intervals</button>
+            <button class="interval_button" style="
+            background-color: white;" id="map_btn">Map</button>
+        </div>
+        <h2 id="intent_mph_view">Intervals MPH: <span id="interval_mph"><span></h2>
     </div>
 
-    <div>
-        <button  style="background: darkcyan;color:white; font-size:medium;" id="interval_btn">Intervals</button>
-
-        <br /><br />
-
-        <button style="background: darkcyan;color:white; font-size:medium;" id="Map">Map</button>
-    </div>
 
     <div id="motion_debug"></div>
+    <br/>
     <div id="map_canvas" style="width:750px; height:450px; border: 2px solid #3872ac; display: none;"></div>
     <div id="debug"></div>
     <script src="cordova.js"></script>
@@ -59,18 +59,21 @@
     <script src="js/sweetalert.min.js"></script>
     <script type='module' src="js/fingerprint.js"></script>
     <script>
-        document.getElementById("Map").onclick = function () {
+        document.getElementById("map_btn").onclick = function () {
             document.getElementById("map_canvas").style.display = "block";
             document.getElementById("interval_mph").style.display = "none";
-            // window.speechSynthesis.cancel()
-
+            document.getElementById("map_btn").style.backgroundColor = "blue";
+            document.getElementById("interval_btn").style.backgroundColor = "white"
+            document.getElementById("intent_mph_view").style.display = "none";
         }
         document.getElementById("interval_btn").onclick = function () {
             document.getElementById("map_canvas").style.display = "none";
             document.getElementById("interval_mph").style.display = "block";
-
+            document.getElementById("map_btn").style.backgroundColor = "white";
+            document.getElementById("interval_btn").style.backgroundColor = "blue"
+            document.getElementById("intent_mph_view").style.display = "block";
         }
-        
+
     </script>
 </body>
 

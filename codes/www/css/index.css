@@ -102,6 +102,14 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
+.interval_button{
+    font-size: 18px;
+    padding: 10px 20px;
+
+    color: black;
+    border: 2px solid #4CAF50;
+    border-radius: 4px;
+}
 
 @media screen and (prefers-color-scheme: dark) {
     body {
