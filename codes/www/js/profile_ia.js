@@ -7,10 +7,8 @@ function init() {
     console.log("STart HERe")
     start_session_api(function (session) {
         console.log("Start Session")
-        alert("Start gps")
         start_gps();
     })
-
 
     // setInterval(function () {
     //     console.log("interval")
@@ -219,7 +217,6 @@ function screenlock() {
     if ('wakeLock' in navigator) {
       isSupported = true;
       alert('Screen Wake Lock API supported!')
-    
         try {
           navigator.wakeLock.request('screen');
           alert('Wake Lock is active!');

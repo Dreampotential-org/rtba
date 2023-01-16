@@ -36,19 +36,9 @@ function start_session_api(callback) {
     });
 }
 
-var POINTS = []
-function session_point(position) {
 
-    point = {'latitude':  position.coords.latitude,
-             'longitude': position.coords.longitude}
-
-    POINTS.push(point)
-
-    if (POINTS.length == 1) {
-        init_map(POINTS[0])
-    } else {
-        add_point(point)
-    }
+// XXX we need to make this api bulk syncing
+function session_point_api(position) {
 
     // $("#debug").text(POINTS)
     var form = new FormData();

@@ -25,6 +25,5 @@ function set_server() {
         SERVER = 'https://lifeforceenergy.us:4443/';
         WEBSOCKET_HOST = 'wss://api.dreampotential.org';
     }
-    alert(SERVER)
 };
 set_server()

@@ -76,7 +76,6 @@ function geo_success(position) {
 }
 
 
-
 function geo_error(err) {
 	console.log("Geo error" + err.code);
 
