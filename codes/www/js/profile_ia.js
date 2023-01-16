@@ -10,18 +10,18 @@ function init() {
         start_gps();
     })
 
-    // setInterval(function () {
-    //     console.log("interval")
-    //     display_user_stats()
-    // }, 3000)
-
-    // Dummy Data For Speed test
     setInterval(function () {
         console.log("interval")
-        // display_user_stats()
-        gdata += 1
-        display_dummy_stats()
+        display_user_stats()
     }, 3000)
+
+    // Dummy Data For Speed test
+    // setInterval(function () {
+    //     console.log("interval")
+    //     // display_user_stats()
+    //     gdata += 1
+    //     display_dummy_stats()
+    // }, 3000)
     configure_events()
     list_medias(function (medias) {
         for (var media of medias) {
@@ -34,31 +34,33 @@ function init() {
 
 var GLOB = null
 function display_user_stats() {
-    get_user_stats(function (results) {
-        GLOB = results;
-        let val;
-        var count = results.interval_stats.length
-        if (count == 0) return
+    
+    get_local_stats();
+    // get_user_stats(function (results) {
+    //     GLOB = results;
+    //     let val;
+    //     var count = results.interval_stats.length
+    //     if (count == 0) return
 
-        $("#stats_miles").text(results['miles'].toFixed(2))
-        $("#stats_mph").text(results['interval_stats'][count - 1]['mph'].toFixed(2))
+    //     $("#stats_miles").text(results['miles'].toFixed(2))
+    //     $("#stats_mph").text(results['interval_stats'][count - 1]['mph'].toFixed(2))
 
-        // display some weight
+    //     // display some weight
 
-        // display previous 10 segments
-        var sorted_stats = results['interval_stats'].reverse()
-        for (var i = 1; i < 10; i++) {
-            if (i >= sorted_stats.length) {
-                // val = sorted_stats[i - 1]['mph'].toFixed(2)
-                val = sorted_stats[i - 1]['hours'] * 60 * 60;
-                break
-            }
-            $("#interval_mph").text(sorted_stats[i]['mph'].toFixed(2))
-        }
-        // const seconds = sorted_stats[-1]['hours']*60*60;
-        // console.log("seconds:", seconds)
-        text_to_speech(val, speedFlow = 'normal')
-    });
+    //     // display previous 10 segments
+    //     var sorted_stats = results['interval_stats'].reverse()
+    //     for (var i = 1; i < 10; i++) {
+    //         if (i >= sorted_stats.length) {
+    //             // val = sorted_stats[i - 1]['mph'].toFixed(2)
+    //             val = sorted_stats[i - 1]['hours'] * 60 * 60;
+    //             break
+    //         }
+    //         $("#interval_mph").text(sorted_stats[i]['mph'].toFixed(2))
+    //     }
+    //     // const seconds = sorted_stats[-1]['hours']*60*60;
+    //     // console.log("seconds:", seconds)
+    //     text_to_speech(val, speedFlow = 'normal')
+    // });
 }
 
 function display_dummy_stats() {

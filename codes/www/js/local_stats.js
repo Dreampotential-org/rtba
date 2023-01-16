@@ -36,13 +36,15 @@ function get_distance(lat1, lon1, lat2, lon2, unit) {
 }
 
 
-function calc_total_point_distance() {
+function get_local_stats() {
     var distance = 0;
-    for (var i = 0; i < POINTS.length; i++) {
+    for (var i = 0; i < POINTS.length -1; i++) {
         distance += get_distance(
             POINTS[i].latitude, POINTS[i].longitude,
             POINTS[i + 1 ].latitude, POINTS[i +1].longitude
         )
     }
+    console.log({distance});
+    console.log({POINTS});
 }
 
