@@ -34,7 +34,7 @@ function init() {
 
 var GLOB = null
 function display_user_stats() {
-    
+
     get_local_stats();
     // get_user_stats(function (results) {
     //     GLOB = results;
@@ -155,6 +155,45 @@ function text_to_speech(seconds, speedFlow) {
 }
 
 function configure_events() {
+
+
+    $("#map_btn").on("click", function(ev) {
+        $("#map_canvas").show()
+        $("#interval_mph").hide()
+        $("#intent_mph_view").hide()
+        $("#player0").hide()
+
+        $("#map_btn").css("backgroundColor", "blue");
+        $("#interval_btn").css("backgroundColor", "white");
+        $("#music_btn").css("backgroundColor", "white");
+    })
+
+    $("#interval_btn").on("click", function(ev) {
+        $("#map_canvas").hide()
+        $("#interval_mph").show()
+        $("#intent_mph_view").show()
+        $("#player0").hide()
+
+
+        $("#map_btn").css("backgroundColor", "white");
+        $("#interval_btn").css("backgroundColor", "blue");
+        $("#music_btn").css("backgroundColor", "white");
+    })
+
+    $("#music_btn").on("click", function(ev) {
+        $("#map_canvas").hide()
+        $("#interval_mph").show()
+        $("#intent_mph_view").hide()
+        $("#player0").show()
+
+        $("#map_btn").css("backgroundColor", "white");
+        $("#interval_btn").css("backgroundColor", "white");
+        $("#music_btn").css("backgroundColor", "blue");
+    })
+
+
+
+
     $("#new_account_create").on("click", function(ev) {
         ev.preventDefault();
         signup_api({

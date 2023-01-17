@@ -1,5 +1,6 @@
 function setup_media(media) {
     $("#player0").html(
+        '<div>List of Media...</div>' +
         '<video preload="auto" controls="" autoplay="true" name="media"' +
             'id="video" width="100%" height="500">' +
             '<source src="' + SERVER +

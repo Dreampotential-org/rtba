@@ -23,7 +23,6 @@
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
-            <div id='player0'></div>
             <p></p>
             <p></p>
         </div>
@@ -36,14 +35,16 @@
                 background-color: blue;" id="interval_btn">Intervals</button>
             <button class="interval_button" style="
             background-color: white;" id="map_btn">Map</button>
+            <button class="interval_button" style="
+            background-color: white;" id="music_btn">Music</button>
         </div>
         <h2 id="intent_mph_view">Intervals MPH: <span id="interval_mph"><span></h2>
     </div>
 
-
+    <div id="map_canvas" style="width:100%; height:450px; display: none;"></div>
+    <div id='player0' style="display:none"><div>
     <div id="motion_debug"></div>
     <br/>
-    <div id="map_canvas" style="width:750px; height:450px; border: 2px solid #3872ac; display: none;"></div>
     <div id="debug"></div>
     <script src="cordova.js"></script>
     <script src="js/index.js"></script>
@@ -59,23 +60,6 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <script type='module' src="js/fingerprint.js"></script>
-    <script>
-        document.getElementById("map_btn").onclick = function () {
-            document.getElementById("map_canvas").style.display = "block";
-            document.getElementById("interval_mph").style.display = "none";
-            document.getElementById("map_btn").style.backgroundColor = "blue";
-            document.getElementById("interval_btn").style.backgroundColor = "white"
-            document.getElementById("intent_mph_view").style.display = "none";
-        }
-        document.getElementById("interval_btn").onclick = function () {
-            document.getElementById("map_canvas").style.display = "none";
-            document.getElementById("interval_mph").style.display = "block";
-            document.getElementById("map_btn").style.backgroundColor = "white";
-            document.getElementById("interval_btn").style.backgroundColor = "blue"
-            document.getElementById("intent_mph_view").style.display = "block";
-        }
-
-    </script>
 </body>
 
 </html>

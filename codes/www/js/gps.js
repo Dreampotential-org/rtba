@@ -88,9 +88,9 @@ function geo_error(err) {
         });
         navigator.geolocation.clearWatch();
         GPS_FAILED = true
-    } else {
-        start_gps()
+        return
     }
+    start_gps()
     console.log("errror no gps")
     console.warn('ERROR(' + err.code + '): ' + err.message);
 }
