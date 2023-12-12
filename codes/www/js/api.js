@@ -14,7 +14,7 @@ function start_session_api(callback) {
     form.append("source", window.location.host);
 
     $.ajax({
-        url: SERVER + "sa/api/start",
+        url: SERVER + "ashe/start",
         async: true,
         crossDomain: true,
         method: "POST",
@@ -48,7 +48,7 @@ function session_point_api(position) {
     form.append("longitude", position.coords.longitude);
     form.append("session_id", GLOBAL_SESSION_ID);
     $.ajax({
-        url: SERVER + "sa/api/session_point",
+        url: SERVER + "ashe/session_point",
         async: true,
         crossDomain: true,
         method: "POST",
@@ -81,8 +81,7 @@ function get_user_stats(callback) {
     console.log(SERVER)
     var form = new FormData();
     $.ajax({
-        url: SERVER + "sa/api/stats?device_id=" + get_finger_print(),
-        //url: SERVER + "sa/api/stats?device_id=2148488581",
+        url: SERVER + "ashe/stats?device_id=" + get_finger_print(),
         async: true,
         crossDomain: true,
         method: "GET",
@@ -135,7 +134,7 @@ function list_medias(callback) {
 function get_distances() {
     var form = new FormData();
     $.ajax({
-        url: SERVER + "sa/api/get_distances",
+        url: SERVER + "ashe/get_distances",
         async: true,
         crossDomain: true,
         method: "POST",
