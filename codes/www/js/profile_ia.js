@@ -9,11 +9,11 @@ function init() {
         console.log("Start Session")
         start_gps();
     })
-
     setInterval(function () {
         console.log("interval")
         display_user_stats()
     }, 3000)
+
 
     // Dummy Data For Speed test
     // setInterval(function () {
