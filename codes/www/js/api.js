@@ -6,18 +6,17 @@ function get_finger_print() {
     return fingerprint;
 }
 
-
-function start_session_api(callback) {
+function get_session_stats(callback) {
 
     var form = new FormData();
-    form.append("device_id", get_finger_print())
+    form.append("device_id", 1)
     form.append("source", window.location.host);
 
     $.ajax({
-        url: SERVER + "ashe/start",
+        url: SERVER + "ashe/stats",
         async: true,
         crossDomain: true,
-        method: "POST",
+        method: "GET",
         processData: false,
         contentType: false,
         mimeType: "multipart/form-data",
@@ -27,14 +26,15 @@ function start_session_api(callback) {
         },
         success: function (response) {
             console.log("start session response: ", response);
-            GLOBAL_SESSION_ID = JSON.parse(response)['session_id']
-            callback(JSON.parse(response)['session_id'])
+            // GLOBAL_SESSION_ID = JSON.parse(response)['session_id']
+            // callback(JSON.parse(response)['session_id'])
         },
         error: function (err) {
             console.log("start error", err)
         },
     });
 }
+
 
 
 // XXX we need to make this api bulk syncing
