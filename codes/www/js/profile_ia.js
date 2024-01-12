@@ -11,7 +11,8 @@ function init() {
     })
     setInterval(function () {
         console.log("interval")
-        display_user_stats()
+        get_session_stats()
+        //display_user_stats()
     }, 3000)
 
 

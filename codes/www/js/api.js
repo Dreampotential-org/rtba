@@ -9,8 +9,8 @@ function get_finger_print() {
 function get_session_stats(callback) {
 
     var form = new FormData();
-    form.append("device_id", 1)
     form.append("source", window.location.host);
+    form.append("device_id", get_finger_print())
 
     $.ajax({
         url: SERVER + "ashe/stats",
@@ -36,6 +36,37 @@ function get_session_stats(callback) {
         },
     });
 }
+
+function start_session_api(callback) {
+
+    var form = new FormData();
+    form.append("device_id", get_finger_print())
+    form.append("source", window.location.host);
+
+    $.ajax({
+        url: SERVER + "ashe/start",
+        async: true,
+        crossDomain: true,
+        method: "POST",
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: form,
+        headers: {
+            Authorization: localStorage.getItem('token'),
+        },
+        success: function (response) {
+            console.log("start session response: ", response);
+            GLOBAL_SESSION_ID = JSON.parse(response)['session_id']
+            callback(JSON.parse(response)['session_id'])
+
+        },
+        error: function (err) {
+            console.log("start error", err)
+        },
+    });
+}
+
 
 
 

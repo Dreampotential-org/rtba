@@ -1,7 +1,6 @@
 var CURRENT_POSITION = null;
 
 function init_session() {
-    get_session_stats();
     start_gps();
 
     $("body").delegate("#start_session", "click", function(e) {
