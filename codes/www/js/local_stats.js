@@ -10,7 +10,7 @@ function session_point(position)  {
 
     if (POINTS.length == 1) {
         init_map(POINTS[0])
-	alert("DJDJDJ")
+	//alert("DJDJDJ")
     } else {
         add_point(point)
     }

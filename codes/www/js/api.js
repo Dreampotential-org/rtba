@@ -213,3 +213,26 @@ function start_polling() {
 
     }, 1000);
 }
+
+SERVER_URL = 'https://api.dreampotential.org/';
+API_URL = SERVER_URL + 'api/';
+AI_API_URL = SERVER_URL + 'ai/';
+REST_AUTH_URL = SERVER_URL + 'rest-auth/';
+CHECKOUT_URL = SERVER_URL + 'checkout/';
+
+function get_settings_checkout(url, method, data = null) {
+    return {
+        'async': true,
+        'crossDomain': true,
+        'headers': {
+            'Authorization': 'Token ' + localStorage.getItem('session_id'),
+        },
+        'url': CHECKOUT_URL + url,
+        'method': method,
+        'processData': false,
+        'data': data,
+        'contentType': 'application/json',
+        'mimeType': 'multipart/form-data',
+    }
+}
+
