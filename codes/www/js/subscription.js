@@ -20,7 +20,7 @@ function init_subscription() {
     });
     $(".agentstat-login").click(function() {
     // if person is not active in their accout ask them to signup
-        else if (subscription_data) {
+        if (subscription_data) {
             settings = get_settings_checkout("create-checkout-session/", "GET")
             $.ajax(settings).done(function(response) {
                 console.log("Data", data)
