@@ -5,6 +5,7 @@ function init() {
 
     init_motions()
     init_subscription()
+    init_music_events()
     console.log("STart HERe")
     start_session_api(function (session) {
         console.log("Start Session")
@@ -26,12 +27,8 @@ function init() {
     // }, 3000)
     configure_events()
     list_medias(function (medias) {
-
         for (var media of medias) {
-            console.log(media)
             setup_media(media)
-            break
-
         }
 
     })

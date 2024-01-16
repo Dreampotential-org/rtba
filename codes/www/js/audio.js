@@ -1,4 +1,10 @@
 function setup_media(media) {
+
+    // XXX we need to make button change the music
+    $("#music").append(
+        "<button id=" + media.id + ">" + media.name + "</button>"
+    )
+
     $("#player0").html(
         '<div>List of Media...</div>' +
         '<video preload="auto" controls="" autoplay="true" name="media"' +
@@ -9,8 +15,18 @@ function setup_media(media) {
         '</video>'
     );
     play()
+
 }
 
+
+function init_music_events() {
+
+    $("#music button").on("click", function(ev) {
+        alert($(this).id)
+
+    })
+
+}
 
 
 function set_volume(percentage) {
