@@ -9,10 +9,10 @@ function session_point(position)  {
     POINTS.push(point)
 
     if (POINTS.length == 1) {
-        init_map("map_canvas")
+        add_point("map_canvas", "point, true)
 	     //alert("DJDJDJ")
     }
-    add_point(point)
+    add_point("map_canvas", point, false)
     session_point_api(position)
 }
 
