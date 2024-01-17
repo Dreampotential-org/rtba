@@ -116,3 +116,63 @@ h1 {
         background-image:linear-gradient(to bottom, #585858 0%, #1B1B1B 51%);
     }
 }
+
+.media-list{
+    color: white;
+    background-color: black;
+    width: 25%;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+
+.media-li{
+    padding: 10px 10px;
+    font-size: 15px;
+}
+
+ul {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+ul li::before {
+  content: "\2022"; /* Unicode character for bullet point */
+  font-size: 2em; /* Adjust the font size as needed */
+  color: red; /* Optional: Set color if you want a different color */
+  margin-right: 0.5em; /* Optional: Add spacing between bullet and text */
+}
+
+.priti{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.media-img-div{
+    display: flex;
+    padding: 20px;
+    padding-right: 0px;
+}
+
+.img-div{
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    border-radius: 10%;
+    background-image: url(flower.jpg);
+}
+
+.media-name{
+    padding: 0px 20px;
+}
+
+.media-h4{
+    margin: 0px;
+    padding: 0px;
+}
+
+.media-p{
+    font-size: 11px;
+}

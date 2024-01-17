@@ -27,9 +27,9 @@ function init() {
     // }, 3000)
     configure_events()
     list_medias(function (medias) {
-        for (var media of medias) {
-            setup_media(media)
-        }
+        // for (var media of medias) {
+            setup_media(medias)
+        // }
 
     })
 }
