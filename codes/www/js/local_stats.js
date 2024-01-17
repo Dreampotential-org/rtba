@@ -1,7 +1,7 @@
 var POINTS = []
 function session_point(position)  {
     point = {
-	'latitude':  position.coords.latitude,
+	     'latitude':  position.coords.latitude,
         'longitude': position.coords.longitude,
         'created_at': new Date()
     }
@@ -9,11 +9,10 @@ function session_point(position)  {
     POINTS.push(point)
 
     if (POINTS.length == 1) {
-        init_map(POINTS[0])
-	//alert("DJDJDJ")
-    } else {
-        add_point(point)
+        init_map("map_canvas")
+	     //alert("DJDJDJ")
     }
+    add_point(point)
     session_point_api(position)
 }
 

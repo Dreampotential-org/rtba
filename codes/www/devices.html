@@ -10,21 +10,26 @@
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="css/index.css">
     <title>Hello World</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFH-yKmfPyaa18_uYUwVWb7THj-b1hymE&v=weekly"></script>
 
     <style>
+        .mapp {
+            width: 100%;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+        }
+
     </style>
+
 </head>
 
 <body>
     <script src="js/config.js"></script>
     <script src="js/devices.js"></script>
     <script src="js/sweetalert.min.js"></script>
-    <script src="js/fingerprint.js"></script>
     <script src="js/jquery.min.js"></script>
-
-
+    <script src="js/map.js"></script>
     <div id='devices'></div>
 
 </body>
