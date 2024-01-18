@@ -10,17 +10,28 @@ function init_devices() {
             )
 
             for(var session of device['sessions']) {
+
+                if (session['sps'].length == 0) {
+                    continue
+                }
+
                 $("#devices").append(
                     "<div><b>Session ID:</b>" + session.id + " <div>" +
-                    "<div><b>Started At:</b>" + session.start + " <div>" +
+                    "<div><b>Started At:</b>" + session.started + " <div>" +
                     "<div class='mapp' id='mia" + session.id + "'><div>")
 
                 var first = true
                 var selector = "mia" + session.id
+
+                if (session['sps'].length == 0) {
+                    $("#mia" + session.id).hide()
+                }
+
                 for(var dot of session['sps']) {
                     add_point(selector, dot, first)
                     first = false
                 }
+
             }
         }
     })

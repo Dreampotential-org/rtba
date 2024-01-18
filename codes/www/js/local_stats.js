@@ -9,7 +9,7 @@ function session_point(position)  {
     POINTS.push(point)
 
     if (POINTS.length == 1) {
-        add_point("map_canvas", "point, true)
+        add_point("map_canvas", point, true)
 	     //alert("DJDJDJ")
     }
     add_point("map_canvas", point, false)
