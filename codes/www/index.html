@@ -29,13 +29,17 @@
     <div id="stats">
         <h1>Total Miles: <b><span id="stats_miles"><span></b></h1><br>
         <h1>MPH: <b><span id="stats_mph"><span></b></h1>
-        <div>
+        <div class="btn-div">
             <button class="interval_button" style="
                 background-color: blue;" id="interval_btn">Intervals</button>
             <button class="interval_button" style="
             background-color: white;" id="map_btn">Map</button>
             <button class="interval_button" style="
             background-color: white;" id="music_btn">Music</button>
+                   <button class="interval_button" style="
+            background-color: white;" id="subscription_btn">Subscription</button>
+        <button class="interval_button" style="
+            background-color: white;" id="profile_btn">Profile</button>
         </div>
         <h2 id="intent_mph_view">Intervals MPH: <span id="interval_mph"><span></h2>
     </div>
@@ -61,6 +65,30 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <script type='module' src="js/fingerprint.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Event listener for the Music button
+            $("#music_btn").on("click", function() {
+                // Hide the .app div
+                $(".app").hide();
+            });
+        });
+    </script>
+    
+     <script>
+        // Add an event listener to the music button
+        document.getElementById('subscription_btn').addEventListener('click', function() {
+            // Redirect to subscription.html when the button is clicked
+            window.location.href = 'subscription.html';
+        });
+    </script>
+     <script>
+        // Add an event listener to the music button
+        document.getElementById('profile_btn').addEventListener('click', function() {
+            // Redirect to subscription.html when the button is clicked
+            window.location.href = 'Profile.html';
+        });
+    </script>
 </body>
 
 </html>

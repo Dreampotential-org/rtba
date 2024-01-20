@@ -176,3 +176,23 @@ ul li::before {
 .media-p{
     font-size: 11px;
 }
+
+.btn-div{
+    /* text-align: center; */
+    padding-top:20px ;
+}
+
+#stats{
+    text-align: center;
+    padding: 20px;
+}
+
+/* .bd{
+
+    background-image: url(map.jpg);
+} */
+
+.profil45{
+    height: 300px;
+     background-image: url(map.jpg);
+}
