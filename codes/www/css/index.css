@@ -196,3 +196,34 @@ ul li::before {
     height: 300px;
      background-image: url(map.jpg);
 }
+
+ #graph-container {
+            display: flex;
+            justify-content: space-between;
+            /* width: 80%;
+            margin: auto; */
+        }
+
+        #elevation-graph {
+            /* width: 50%;
+            height: 200px; */
+            /* border: 1px solid #ccc;
+            align-items: right; */
+            
+        }
+
+        .data{
+          font-size: 20px;
+         margin: 0px;
+         padding-left: 50px;
+        }
+
+        .data-div{
+            display: flex;
+         
+        }
+
+        .min{
+          margin-top: 8px;
+          font-weight: bold;
+        }

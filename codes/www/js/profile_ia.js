@@ -26,6 +26,7 @@ function init() {
     //     display_dummy_stats()
     // }, 3000)
     configure_events()
+    configure_events_new()
     list_medias(function (medias) {
         // for (var media of medias) {
             setup_media(medias)
@@ -205,6 +206,72 @@ function configure_events() {
         });
     })
 }
+
+function configure_events_new() {
+
+
+    $("#profile_btn").on("click", function(ev) {
+        $("#map_canvas").show()
+        $("#graph-container").show()
+        $("#interval_mph").hide()
+        $("#intent_mph_view").hide()
+        $("#player0").hide()
+        
+         $("#profile_btn").hide()
+        $("#interval_btn").hide()
+        $("#music_btn").hide()
+        $("#map_btn").hide()
+        $("#subscription_btn").hide()
+        $("#total_miles").hide()
+        $("#mph").hide()
+        $("#stats").hide()
+        $("#app").hide()
+      
+
+        
+         $("#map_canvas").css("height", "50%")
+        // $("#profile_btn").css("backgroundColor", "blue");
+        // $("#interval_btn").css("backgroundColor", "white");
+        // $("#music_btn").css("backgroundColor", "white");
+    })
+
+    $("#interval_btn").on("click", function(ev) {
+        $("#map_canvas").hide()
+        $("#interval_mph").show()
+        $("#intent_mph_view").show()
+        $("#player0").hide()
+
+
+        $("#profile_btn").css("backgroundColor", "white");
+        $("#interval_btn").css("backgroundColor", "blue");
+        $("#music_btn").css("backgroundColor", "white");
+    })
+
+    $("#music_btn").on("click", function(ev) {
+        $("#map_canvas").hide()
+        $("#interval_mph").show()
+        $("#intent_mph_view").hide()
+        $("#player0").show()
+
+        $("#profile_btn").css("backgroundColor", "white");
+        $("#interval_btn").css("backgroundColor", "white");
+        $("#music_btn").css("backgroundColor", "blue");
+    })
+
+
+
+
+    $("#new_account_create").on("click", function(ev) {
+        ev.preventDefault();
+        signup_api({
+            name: $('#account_name').val(),
+            email: $("#new_account_email").val(),
+            password: $("#new_account_password").val(),
+        });
+    })
+}
+
+
 
 
 function screenlock() {
