@@ -13,7 +13,7 @@ function init() {
     })
     setInterval(function () {
         console.log("interval")
-        get_session_stats()
+        // get_session_stats()
         //display_user_stats()
     }, 3000)
 
@@ -27,9 +27,9 @@ function init() {
     // }, 3000)
     configure_events()
     list_medias(function (medias) {
-        for (var media of medias) {
-            setup_media(media)
-        }
+        // for (var media of medias) {
+            setup_media(medias)
+        // }
 
     })
 }

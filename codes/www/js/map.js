@@ -7,19 +7,21 @@ var polyline = new google.maps.Polyline({
    strokeOpacity: 0.4      // opacity of line
 }); // create the polyline (global)
 var path = []; // global variable to hold all the past locations
+
 var map = null;
 
-function init_map(point) {
-    map = new google.maps.Map(
-    document.getElementById("map_canvas"), {
-        center: new google.maps.LatLng(point.latitude,
-                                       point.longitude),
-        zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-}
+function add_point(selector, point, first) {
 
-function add_point(point) {
+    if (first) {
+        map = new google.maps.Map(
+        document.getElementById(selector), {
+            center: new google.maps.LatLng(point.latitude,
+                                           point.longitude),
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+    }
+
     lastCoordinates = new google.maps.Marker({
         position: new google.maps.LatLng(parseFloat(point.latitude),
                                          parseFloat(point.longitude)),
