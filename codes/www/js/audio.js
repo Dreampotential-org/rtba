@@ -9,7 +9,7 @@
         '<video preload="auto" controls="" autoplay="true" name="media"' +
             'id="video" width="100%" height="500">' +
             '<source src="' + SERVER +
-            'configs/stream_media?id=' + medias[0].id + '"' +
+            'configs/stream_media?id=' + medias[1].id + '"' +
                  'type="video/mp4">' +
         '</video></div>'
     );
@@ -31,7 +31,7 @@ console.log(items);
         '<video preload="auto" controls="" autoplay="true" name="media"' +
             'id="video" width="100%" height="500">' +
             '<source src="' + SERVER +
-            'configs/stream_media?id=' + medias[0].id + '"' +
+            'configs/stream_media?id=' + medias[1].id + '"' +
                  'type="video/mp4">' +
         '</video></div>'
     );

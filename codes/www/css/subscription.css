@@ -1,0 +1,74 @@
+
+
+.Price-div{
+    padding: 50px 50px;
+    /* background-color: white; */
+    background-color: rgb(245, 240, 240);
+}
+
+.tarter{
+    color: red;
+}
+
+
+
+.Starter{
+    text-align: left;
+    padding: 40px 0px;
+   
+    border-radius: 40px;
+    margin: 50px 0px;
+    background-color: rgb(234, 234, 247);
+
+}
+
+.Business{
+    background-color: rgb(255, 255, 255);
+   
+}
+
+.content-div{
+    
+     text-align: left;
+
+}
+
+ul li{
+    font-size: 15px;
+}
+
+ul{
+    margin-bottom: 30px;
+}
+
+.Starter h1{
+    color: black;
+}
+
+.Starter p{
+    margin: 20px 0px;
+}
+
+.free-btn{
+    margin: 40px 0px;
+    padding: 20px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    background-color: rgb(80, 80, 218);
+    border: 3px solid rgb(190, 185, 185);
+}
+
+.Starter hr{
+   width: 280px;
+   margin: 0px;
+   padding: 20px 0px;
+   /* padding: 40px 0px;
+   padding-top: 40px !important; */
+}
+
+.usd{
+    font-size: 12px;
+}
+.col-4{
+    padding: 0px;
+}

@@ -3,67 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+    <link rel="stylesheet" href="css/profile.css">
     <title>Document</title>
-<style>
-        #graph-container {
-            display: flex;
-            justify-content: space-between;
-            /* width: 80%;
-            margin: auto; */
-        }
-
-        #elevation-graph {
-            width: 50%;
-            height: 200px;
-            border: 1px solid #ccc;
-            align-items: right;
-            
-        }
-    </style>
 
 </head>
-<body class="bd"> 
-<div class="profil45">
- 
+<body > 
+<!-- <div class="profil45"></div> -->
+<div class="profile-container">
+<div class="top-on-hr">
+<h1><</h1>
+<h1>>--<</h1>
+<h1>...</h1>
 </div>
+<hr class="top-hr">
+ <div class="data">
+   <div class="data-record">
+   <h1>5.51</h1>
+   <p>DISTANCE</p>
+   <p>(MI)</p>
+   </div>
+   <div class="data-record">
+   <h1>54.20</h1>
+   <p>DURATION</p>
+   </div>
+ </div>
+ <div class="data 2">
+   <div class="data-record">
+   <h1>9:52</h1>
+   <p>AVE PACE</p>
+   <p>(MIN/MI)</p>
+   </div>
+   <div class="data-record">
+   <h1>90</h1>
+   <p>EL. GAIN</p>
+    <p>(FT)</p>
+   </div>
+ </div>
+ <hr>
+ <div class="splits">
+  <h3>SPLITS</h3>
+  <h3>SETTINGS</h3>
+ </div>
+ <div class="Miles">
+  <h3>MILE</h3>
+  <h3>1</h3>
+  <h3>2</h3>
+  <h3>3</h3>
+  <h3>4</h3>
+  <h3>5</h3>
+ </div>
+ <hr>
+ <div class="total">
+  <h3>MILE</h3>
+  <h3>1</h3>
+  <h3>2</h3>
+  <h3>3</h3>
+  <h3>4</h3>
+  <h3>5</h3>
+ </div>
     <div id="graph-container">
-    <h1>Data</h1>
+    <h3>PACE</h3>
+    <p>(min/mi)</p>
         <canvas id="elevation-graph"></canvas>
     </div>
-
-    
-
-        <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Example elevation data
-            var elevationData = [0,20,30, 40, 40 ,50, 50, 100, 75, 120, 90, 150, 100];
-
-            // Get the canvas element
-            var canvas = document.getElementById('elevation-graph');
-            var ctx = canvas.getContext('2d');
-
-            // Set the canvas size
-            canvas.width = elevationData.length * 40; // Adjust as needed
-            canvas.height = 300;
-
-            // Draw the elevation graph
-            drawGraph(elevationData, ctx);
-
-            function drawGraph(data, context) {
-                var maxElevation = Math.max.apply(null, data);
-
-                for (var i = 0; i < data.length; i++) {
-                    var barHeight = (data[i] / maxElevation) * canvas.height;
-                    var barWidth = 30; // Adjust as needed
-                    var x = i * (barWidth + 1); // Adjust spacing as needed
-
-                    context.fillStyle = '#3498db'; // Blue color, adjust as needed
-                    context.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-                }
-            }
-        });
-    </script>
+      <h3 class="elevation">Elevation(ft)</h3>
+    </div>
+  <script src="js/distance.js"></script>
  <script src="js/profile_ia.js"></script>
 </body>
 </html>
