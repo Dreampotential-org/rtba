@@ -52,12 +52,11 @@ function start_session_api(callback) {
         contentType: false,
         mimeType: "multipart/form-data",
         data: form,
-        headers: {
-            Authorization: localStorage.getItem('token'),
-        },
+
         success: function (response) {
             console.log("start session response: ", response);
             GLOBAL_SESSION_ID = JSON.parse(response)['session_id']
+            localStorage.setItem('token', GLOBAL_SESSION_ID)
             callback(JSON.parse(response)['session_id'])
 
         },
