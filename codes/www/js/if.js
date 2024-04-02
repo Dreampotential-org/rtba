@@ -1,6 +1,20 @@
-function init() {
+function displayfile(file) {
+    console.log(file)
+    $("#result").append(
+        "<a href='" + SERVER + "storage/stream?id=" +
+            file.id + "'>" + file.filename + "</a>"
+    )
+}
 
-    start_session_api(function(sessionid) {})
+function init() {
+    start_session_api(function(sessionid) {
+        getfiles(function(files) {
+            console.log("Files");
+            for(var file of files) {
+                displayfile(file)
+            }
+        })
+    })
 
   $("#upload").on("change", function (e) {
     e.preventDefault();
@@ -27,7 +41,8 @@ function init() {
     data.append("source", window.location.host);
 
     var xhr = new XMLHttpRequest();
-    // xhr.withCredentials = true;
+
+    // make working with mutiple
     function updateProgress(e) {
       if (e.lengthComputable) {
         console.log(e.loaded);
@@ -48,8 +63,9 @@ function init() {
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
         console.log(this)
-        $("body").append("<img src='" + xhr.responseURL + "'></img>")
         if (this.status == 200) {
+            var uploadid = JSON.parse(this.response)['id']
+            $("#result").append(SERVER + "storage/stream?id=" + uploadid)
           console.log({
             title: "Good job!",
             text: "Video submitted successfully!",
@@ -69,19 +85,10 @@ function init() {
         }
       }
     });
-    xhr.open("POST", SERVER + "/storage/fileupload/");
+    xhr.open("POST", SERVER + "storage/fileupload/");
     xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-
-    //xhr.setRequestHeader(
-    //  "Authorization",
-    //  "Token " + localStorage.getItem("session_id")
-    //);
     xhr.send(data);
   });
 }
 
 window.addEventListener('DOMContentLoaded', init, false);
-
-
-
-
