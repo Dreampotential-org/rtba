@@ -1,3 +1,5 @@
+
+var pushing = []
 function displayfile(file) {
     console.log(file)
     $("#result").append(
@@ -18,20 +20,11 @@ function init() {
 
   $("#upload").on("change", function (e) {
     e.preventDefault();
-
     // XXX TODO make working with mu
     var file = e.target.files[0];
     GLOBAL_FILE = file;
     $("#upload_vid_form").submit();
-    console.log({
-      title: "0%",
-      text: "Video uploading please wait.",
-      icon: "info",
-      buttons: false,
-      closeOnEsc: false,
-      closeOnClickOutside: false,
-    });
-  });
+  })
 
 
   $("#submit").click(function (e) {
@@ -43,13 +36,6 @@ function init() {
     var xhr = new XMLHttpRequest();
 
     // make working with mutiple
-    function updateProgress(e) {
-      if (e.lengthComputable) {
-        console.log(e.loaded);
-        console.log(e.loaded + " / " + e.total);
-      }
-    }
-
     console.log({
       title: "0%",
       text: "Video uploading please wait.",
@@ -89,6 +75,17 @@ function init() {
     xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
     xhr.send(data);
   });
+
+}
+
+function updateProgress(e) {
+  if (e.lengthComputable) {
+    console.log(e.loaded);
+    console.log(e.loaded + " / " + e.total);
+    var progress = e.loaded + " / " + e.total;
+    $("#oprotg").html(
+        "<div>Video uploading please wait: " + progress + "</div>")
+  }
 }
 
 window.addEventListener('DOMContentLoaded', init, false);
