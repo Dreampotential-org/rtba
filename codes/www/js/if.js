@@ -4,11 +4,12 @@ function displayfile(file) {
     console.log(file)
     $("#result").append(
         "<a href='" + SERVER + "storage/stream?id=" +
-            file.id + "'>" + file.filename + "</a>"
+            file.id + "'>" + file.filename + "</a><br>"
     )
 }
 
 function init() {
+    parseid()
     start_session_api(function(sessionid) {
         getfiles(function(files) {
             console.log("Files");
@@ -88,4 +89,28 @@ function updateProgress(e) {
   }
 }
 
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(
+        /[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+
+function parseid()  {
+    var id = getUrlVars()['id'];
+
+    $("#video").html(
+        '<video controls autoplay>' +
+            "<source src='" + SERVER + 'storage/stream?id=' + id + "'" +
+            ' type="video/mp4">' +
+        '</video>')
+
+}
+
+
 window.addEventListener('DOMContentLoaded', init, false);
+
