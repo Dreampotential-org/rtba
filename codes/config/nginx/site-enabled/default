@@ -16,4 +16,11 @@ server {
            alias /var/www/;
 
         }
+
+
+        location /rtv {
+            try_files $uri $uri/ /rtv.html;
+        }
+
+
 }
