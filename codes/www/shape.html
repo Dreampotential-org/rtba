@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    
+    <link rel="stylesheet" href="css/index.css">
+    
+
+    <style>
+        /* CSS for centering and animating buttons */
+
+        /* Center the buttons and add proper x-axis alignment */
+        #stats > div {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Style for the buttons */
+        .interval_button {
+            background-color: rgb(37, 184, 181);
+            color: rgb(8, 0, 0);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hover effect */
+        .interval_button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Active effect */
+        .interval_button:active {
+            transform: scale(0.9);
+            box-shadow: none;
+        }
+
+        /* Ensure button visibility */
+        .interval_button:focus {
+            outline: none;
+        }
+
+        /* Adjust z-index for button visibility */
+        .interval_button:not(:focus) {
+            opacity: 1;
+        }
+
+        /* Adjust opacity for active button */
+        .interval_button:active {
+            opacity: 1 !important;
+        }
+    </style>
+    <title>DreamAi</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFH-yKmfPyaa18_uYUwVWb7THj-b1hymE&v=weekly"></script>
+</head>
+
+<body>
+    <div id="app" class="app">
+        <h1>uLwwwwWaburnx995</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div id="stats">
+        <h1 id="total_miles">Total Miles: <b><span id="stats_miles"><span></b></h1><br>
+        <h1 id="mph">MPH: <b><span id="stats_mph"><span></b></h1>
+        <div class="btn-div">
+            <button class="interval_button" style="
+                background-color: blue;" id="interval_btn">Intervals</button>
+            <button class="interval_button" style="
+            background-color: white;" id="map_btn">Map</button>
+            <button class="interval_button" style="
+            background-color: white;" id="music_btn">Music</button>
+                   <button class="interval_button" style="
+            background-color: white;" id="subscription_btn">Subscription</button>
+        <button class="interval_button" style="
+            background-color: white;" id="profile_btn">Profile</button>
+        </div>
+        <h2 id="intent_mph_view">Intervals MPH: <span id="interval_mph"><span></h2>
+    </div>
+
+    <div id="map_canvas" style="width:100%; height:450px; display: none;"></div>
+     <div id="graph-container"  style="display: none;">
+    <div class="data-div">
+    <h2 class="data">Data</h2>
+    <span class="min">(min/mi)</span>
+    </div>
+        <canvas id="elevation-graph"></canvas>
+    </div>
+    <div id='player0' style="display:none"><div>
+    <div id="motion_debug"></div>
+    <br />
+    <div id="debug"></div>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/gps.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/local_stats.js"></script>
+    <script src="js/profile_ia.js"></script>
+    <script src="js/motions.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/subscription.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script type='module' src="js/fingerprint.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Event listener for the Music button
+            $("#music_btn").on("click", function() {
+                // Hide the .app div
+                $(".app").hide();
+            });
+        });
+    </script>
+    
+     <script>
+        // Add an event listener to the music button
+        document.getElementById('subscription_btn').addEventListener('click', function() {
+            // Redirect to subscription.html when the button is clicked
+            window.location.href = 'subscription.html';
+        });
+    </script>
+     <script>
+        // Add an event listener to the music button
+        document.getElementById('profile_btn').addEventListener('click', function() {
+            // Redirect to subscription.html when the button is clicked
+            window.location.href = 'Profile.html';
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Example elevation data
+            var elevationData = [0,20,30, 40, 40 ,50, 50, 100, 75, 120, 90, 150, 100];
+
+            // Get the canvas element
+            var canvas = document.getElementById('elevation-graph');
+            var ctx = canvas.getContext('2d');
+
+            // Set the canvas size
+            canvas.width = elevationData.length * 40; // Adjust as needed
+            canvas.height = 200;
+
+            // Draw the elevation graph
+            drawGraph(elevationData, ctx);
+
+            function drawGraph(data, context) {
+                var maxElevation = Math.max.apply(null, data);
+
+                for (var i = 0; i < data.length; i++) {
+                    var barHeight = (data[i] / maxElevation) * canvas.height;
+                    var barWidth = 40; // Adjust as needed
+                    var x = i * (barWidth + 1); // Adjust spacing as needed
+
+                    context.fillStyle = '#3498db'; // Blue color, adjust as needed
+                    context.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
