@@ -52,15 +52,15 @@ function get_session_stats(callback) {
             Authorization: localStorage.getItem('token'),
         },
         success: function (response) {
-            console.log("start session response: ", response);
-            // GLOBAL_SESSION_ID = JSON.parse(response)['session_id']
-            // callback(JSON.parse(response)['session_id'])
-            $("#stats_miles").text(JSON.parse(response)['miles'])
+		console.log("start session response: ", response);
+		// GLOBAL_SESSION_ID = JSON.parse(response)['session_id']
+		// callback(JSON.parse(response)['session_id'])
+		$("#stats_miles").text(JSON.parse(response)['miles'])
 
-        },
-        error: function (err) {
-            console.log("start error", err)
-        },
+	},
+	    error: function (err) {
+		    console.log("start error", err)
+	    },
     });
 }
 

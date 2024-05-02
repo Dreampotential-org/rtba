@@ -1,4 +1,3 @@
-
 var pushing = []
 function displayfile(file) {
     console.log(file)
@@ -9,7 +8,6 @@ function displayfile(file) {
 }
 
 function init() {
-    parseid()
     start_session_api(function(sessionid) {
         getfiles(function(files) {
             console.log("Files");
@@ -103,6 +101,7 @@ function getUrlVars() {
 function parseid()  {
     var id = getUrlVars()['id'];
 
+
     $("#video").html(
         '<video controls autoplay>' +
             "<source src='" + SERVER + 'storage/stream?id=' + id + "'" +
@@ -113,4 +112,3 @@ function parseid()  {
 
 
 window.addEventListener('DOMContentLoaded', init, false);
-

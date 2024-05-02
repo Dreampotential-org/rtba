@@ -17,7 +17,7 @@ function set_server() {
         WEBSOCKET_HOST = 'wss://localhost:8000';
     }
     else {
-        SERVER = 'https://localhost:8000/';
+        SERVER = 'http://localhost:8000/';
         WEBSOCKET_HOST = 'wss://api.dreampotential.org';
     }
     // SERVER = 'https://api.dreampotential.org/';
