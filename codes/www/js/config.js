@@ -8,6 +8,10 @@ function set_server() {
         SERVER = 'https://vm2967.tmdcloud.com/';
         WEBSOCKET_HOST = 'wss://vm2967.tmdcloud.com';
     }
+    else if (window.location.origin.includes("dreampotential.org")) {
+        SERVER = 'https://api.dreampotential.org/';
+        WEBSOCKET_HOST = 'wss://api.dreampotential.org';
+    }
     else if (window.location.origin.includes("https://meylordrive.today")) {
         SERVER = 'https://api.dreampotential.org/';
         WEBSOCKET_HOST = 'wss://api.dreampotential.org';
