@@ -1,6 +1,5 @@
 server {
-        listen 8087 default_server;
-        listen [::]:8085 default_server;
+        listen 8887 default_server;
 
         resolver 8.8.8.8;
 
@@ -18,9 +17,9 @@ server {
         }
 
 
-        location /rtv {
-            try_files $uri $uri/ /rtv.html;
-        }
+  #      location /rtv {
+  #          try_files $uri $uri/ /rtv.html;
+ #       }
 
 
 }
