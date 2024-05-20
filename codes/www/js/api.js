@@ -7,6 +7,33 @@ function get_finger_print() {
 }
 
 
+function getMedia(callback) {
+
+    var form = new FormData();
+
+    $.ajax({
+        url: SERVER + "storage/get_media/",
+        async: true,
+        crossDomain: true,
+        method: "GET",
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: form,
+        headers: {
+            Authorization: localStorage.getItem('token'),
+        },
+        success: function (response) {
+            console.log("getmedias:  ", response);
+            callback(JSON.parse(response))
+        },
+        error: function (err) {
+            console.log("start error", err)
+        },
+    });
+}
+
+
 function getfiles(callback) {
 
     var form = new FormData();
